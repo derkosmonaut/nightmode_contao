@@ -1,6 +1,10 @@
 # Changelog
 
-## [0.1.0] – 2026-11-19 (Release Candidate)
+## [Unreleased]
+
+- Anleitung im README, Screenshot der Seiteneinstellungen
+
+## [0.1] – 2026-11-19 (Release Candidate)
 
 Erste Version.
 
