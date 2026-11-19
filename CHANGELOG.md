@@ -1,26 +1,16 @@
 # Changelog
 
-## [Unreleased]
+## [0.1.0] – 2026-11-19 (Release Candidate)
 
-### Behoben
-
-- Vererbung: Unterseiten ohne eigene Einstellungen übernahmen die der Elternseite nicht. Außerdem wurde jede Seite
-  der Installation als Infoscreen behandelt (kein Cache, Heartbeat bei jedem Aufruf).
-
-### Geändert
-
-- `derkosmonaut/opentimes-contao` ist jetzt feste Abhängigkeit und wird mitinstalliert
-
-- Override heißt jetzt „Manuell schalten“ mit der Option „Automatisch (nach Öffnungszeiten)“ als Standard
-
-### Hinzugefügt
+Erste Version.
 
 - Infoscreen-Einstellungen an Seiten (reguläre Seiten und Ordnerseiten), vererbbar über den Seitenbaum
-- Umschaltung über den Hook `getArticles`: außerhalb der Öffnungszeiten ersetzt der Alternativinhalt die Artikel einer Layout-Spalte
-- Alternativinhalt: schwarzer Screen, Artikel (auch von anderen Seiten) oder Inhalt einer anderen Seite
+- Umschaltung über den Hook `getArticles`: Außerhalb der Öffnungszeiten ersetzt der Alternativinhalt die Artikel
+  einer Layout-Spalte
+- Alternativinhalt: schwarzer Screen, ein Artikel (auch von anderen Seiten) oder der Inhalt einer anderen Seite
 - Vor- und Nachlauf in Minuten
 - Option „Pausen überbrücken“ für mehrere Zeitfenster am Tag
-- Override „immer an“ / „immer aus“, vererbbar (z. B. für einen ganzen Raum)
-- Öffnungszeiten aus `derkosmonaut/opentimes-contao` über `ScheduleProviderInterface`
-- Infoscreen-Seiten werden nie gecacht; Heartbeat „zuletzt geladen“
+- „Manuell schalten“: Automatisch / Immer normalen Inhalt zeigen / Immer Alternativinhalt zeigen, vererbbar
+- Öffnungszeiten aus `derkosmonaut/opentimes-contao` (feste Abhängigkeit)
+- Infoscreen-Seiten werden nie gecacht; „Zuletzt geladen“ pro Screen
 - Statusanzeige in den Seiteneinstellungen
