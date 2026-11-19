@@ -14,7 +14,7 @@ use Derkosmonaut\NightmodeBundle\Schedule\ScheduleProviderInterface;
  * Reihenfolge:
  *   1. Override ("immer an" / "immer aus")
  *   2. Kein Ort oder keine Zeiten bekannt → normaler Inhalt (lieber Inhalt als ein dunkler Screen)
- *   3. Öffnungszeiten, erweitert um Vor- und Nachlauf
+ *   3. Öffnungszeiten, erweitert um Vor- und Nachlauf; auf Wunsch mit überbrückten Pausen
  */
 final class ScreenStateResolver
 {
@@ -52,6 +52,10 @@ final class ScreenStateResolver
             return new ScreenState(true, ScreenState::REASON_UNKNOWN);
         }
 
+        if ($config->bridgeBreaks) {
+            $intervals = $this->bridge($intervals);
+        }
+
         $windows = $this->expand($intervals, $lead, $lag);
 
         foreach ($windows as $window) {
@@ -67,6 +71,37 @@ final class ScreenStateResolver
         }
 
         return new ScreenState(false, ScreenState::REASON_SCHEDULE);
+    }
+
+    /**
+     * Fasst Zeitfenster zusammen, die am selben Tag aufeinander folgen (z. B. 09-12 und 13-17 → 09-17).
+     * Die Nacht bleibt eine Lücke, auch bei Fenstern über Mitternacht.
+     *
+     * @param list<Interval> $intervals
+     *
+     * @return list<Interval>
+     */
+    private function bridge(array $intervals): array
+    {
+        usort($intervals, static fn (Interval $a, Interval $b): int => $a->start <=> $b->start);
+
+        $bridged = [];
+
+        foreach ($intervals as $interval) {
+            $last = array_key_last($bridged);
+
+            if (null !== $last && $bridged[$last]->end->format('Y-m-d') === $interval->start->format('Y-m-d')) {
+                if ($interval->end > $bridged[$last]->end) {
+                    $bridged[$last] = new Interval($bridged[$last]->start, $interval->end);
+                }
+
+                continue;
+            }
+
+            $bridged[] = $interval;
+        }
+
+        return $bridged;
     }
 
     /**

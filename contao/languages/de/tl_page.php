@@ -12,7 +12,8 @@ $GLOBALS['TL_LANG']['tl_page']['nightmode_column'] = ['Layout-Spalte', 'Die Spal
 $GLOBALS['TL_LANG']['tl_page']['nightmode_type'] = ['Alternativinhalt', 'Was außerhalb der Öffnungszeiten angezeigt wird.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_article'] = ['Artikel', 'Dieser Artikel wird angezeigt. Er darf auf einer anderen Seite liegen.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_page'] = ['Seite', 'Die veröffentlichten Artikel dieser Seite (gleiche Layout-Spalte) werden angezeigt.'];
-$GLOBALS['TL_LANG']['tl_page']['nightmode_override'] = ['Override', 'Schaltet unabhängig von den Öffnungszeiten. Gilt auch für alle Unterseiten ohne eigenen Override, z. B. für einen ganzen Raum.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_bridge'] = ['Pausen überbrücken', 'Hat ein Tag mehrere Zeitfenster (z. B. 9-12 und 13-17 Uhr), bleibt der Screen von der ersten Öffnung bis zur letzten Schließung durchgehend an.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_override'] = ['Manuell schalten', 'Schaltet unabhängig von den Öffnungszeiten, z. B. für eine Abendveranstaltung oder Wartung. An einer Elternseite gilt es für alle Unterseiten, die auf „Automatisch“ stehen. Danach wieder auf „Automatisch“ stellen.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_status'] = ['Status', ''];
 
 $GLOBALS['TL_LANG']['tl_page']['nightmode_types'] = [
@@ -22,8 +23,9 @@ $GLOBALS['TL_LANG']['tl_page']['nightmode_types'] = [
 ];
 
 $GLOBALS['TL_LANG']['tl_page']['nightmode_overrides'] = [
-    'on' => 'Immer normaler Inhalt',
-    'off' => 'Immer Alternativinhalt',
+    'auto' => 'Automatisch (nach Öffnungszeiten)',
+    'on' => 'Immer normalen Inhalt zeigen',
+    'off' => 'Immer Alternativinhalt zeigen',
 ];
 
 $GLOBALS['TL_LANG']['tl_page']['nightmode_info'] = [
@@ -34,7 +36,7 @@ $GLOBALS['TL_LANG']['tl_page']['nightmode_info'] = [
     'inactive' => 'Alternativinhalt',
     'reason' => 'Grund',
     'reasons' => [
-        'override' => 'Override',
+        'override' => 'manuell geschaltet',
         'schedule' => 'Öffnungszeiten',
         'no_location' => 'kein Ort gewählt',
         'unknown' => 'keine Öffnungszeiten bekannt (Ort ohne Plan oder Öffnungszeiten-Modul fehlt)',
@@ -42,7 +44,7 @@ $GLOBALS['TL_LANG']['tl_page']['nightmode_info'] = [
     'next' => 'Nächster Wechsel',
     'never' => 'keiner in den nächsten 14 Tagen',
     'source' => 'Einstellungen von',
-    'overrideSource' => 'Override von',
+    'overrideSource' => 'Manuell geschaltet an',
     'page' => 'Seite ID %d',
     'seen' => 'Zuletzt geladen',
     'neverSeen' => 'noch nie',

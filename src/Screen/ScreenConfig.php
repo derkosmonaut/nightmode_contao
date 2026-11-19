@@ -23,6 +23,7 @@ final readonly class ScreenConfig
      * @param int    $overridePageId  die Seite, von der der Override stammt (0 = kein Override)
      * @param int    $leadMinutes     so viele Minuten vor der Öffnung einschalten
      * @param int    $lagMinutes      so viele Minuten nach der Schließung ausschalten
+     * @param bool   $bridgeBreaks    Pausen zwischen Zeitfenstern desselben Tages überbrücken
      * @param string $column          Layout-Spalte, die umgeschaltet wird
      */
     public function __construct(
@@ -31,6 +32,7 @@ final readonly class ScreenConfig
         public int $locationId,
         public int $leadMinutes = 0,
         public int $lagMinutes = 0,
+        public bool $bridgeBreaks = false,
         public string $column = 'main',
         public string $alternativeType = self::TYPE_BLANK,
         public int $alternativeArticle = 0,

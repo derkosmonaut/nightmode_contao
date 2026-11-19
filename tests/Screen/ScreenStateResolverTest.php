@@ -78,6 +78,30 @@ final class ScreenStateResolverTest extends TestCase
         self::assertSame('2026-01-12 12:50', $state->nextChange?->format('Y-m-d H:i'));
     }
 
+    public function testBridgedBreakKeepsScreenOnUntilLastClosing(): void
+    {
+        $state = $this->resolve($this->config(bridge: true), '2026-01-12 12:30');
+
+        self::assertTrue($state->active);
+        self::assertSame('2026-01-12 17:00', $state->nextChange?->format('Y-m-d H:i'));
+    }
+
+    public function testBridgeDoesNotBridgeTheNight(): void
+    {
+        $state = $this->resolve($this->config(bridge: true, lag: 10), '2026-01-12 22:00');
+
+        self::assertFalse($state->active);
+        self::assertSame('2026-01-13 09:00', $state->nextChange?->format('Y-m-d H:i'));
+    }
+
+    public function testBridgeWithLeadStartsBeforeFirstOpening(): void
+    {
+        $state = $this->resolve($this->config(bridge: true, lead: 15), '2026-01-12 08:50');
+
+        self::assertTrue($state->active);
+        self::assertSame('2026-01-12 17:00', $state->nextChange?->format('Y-m-d H:i'));
+    }
+
     public function testOverrideWinsOverSchedule(): void
     {
         $on = $this->resolve($this->config(override: ScreenConfig::OVERRIDE_ON), '2026-01-12 22:00');
@@ -121,9 +145,9 @@ final class ScreenStateResolverTest extends TestCase
         return (new ScreenStateResolver($this->provider($this->dailyIntervals())))->resolve($config, $this->at($now));
     }
 
-    private function config(int $location = 1, int $lead = 0, int $lag = 0, string $override = ScreenConfig::OVERRIDE_NONE): ScreenConfig
+    private function config(int $location = 1, int $lead = 0, int $lag = 0, string $override = ScreenConfig::OVERRIDE_NONE, bool $bridge = false): ScreenConfig
     {
-        return new ScreenConfig(10, 10, $location, $lead, $lag, override: $override, overridePageId: '' === $override ? 0 : 10);
+        return new ScreenConfig(10, 10, $location, $lead, $lag, $bridge, override: $override, overridePageId: '' === $override ? 0 : 10);
     }
 
     /**

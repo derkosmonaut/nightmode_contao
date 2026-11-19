@@ -10,8 +10,8 @@ use Doctrine\DBAL\Connection;
  * Liest die Nachtmodus-Einstellungen einer Seite und vererbt sie über den Seitenbaum.
  *
  * - Einstellungen (Ort, Versatz, Alternativinhalt): die nächste Seite nach oben mit "Einstellungen festlegen"
- *   liefert alle Werte. So bilden Elternseiten einen Raum, dessen Screens die Werte übernehmen.
- * - Override: der nächste gesetzte Wert nach oben gewinnt, unabhängig davon, wo die Einstellungen herkommen.
+ *   liefert alle Werte. Unterseiten ohne eigenen Haken erben sie vollständig. So bilden Elternseiten einen Raum, dessen Screens die Werte übernehmen.
+ * - Manuell schalten: der nächste Wert "an"/"aus" nach oben gewinnt ("automatisch" wird übersprungen), unabhängig davon, wo die Einstellungen herkommen.
  *   Ein Override am Raum schaltet so alle Screens darin, solange ein Screen keinen eigenen hat.
  */
 class ScreenConfigRepository
@@ -39,7 +39,7 @@ class ScreenConfigRepository
 
         for ($depth = 0; $id > 0 && $depth < self::MAX_DEPTH; ++$depth) {
             $row = $this->connection->fetchAssociative(
-                'SELECT id, pid, nightmode_set, nightmode_location, nightmode_lead, nightmode_lag, nightmode_column,
+                'SELECT id, pid, nightmode_set, nightmode_location, nightmode_lead, nightmode_lag, nightmode_bridge, nightmode_column,
                         nightmode_type, nightmode_article, nightmode_page, nightmode_override
                    FROM tl_page WHERE id = ?',
                 [$id],
@@ -54,7 +54,8 @@ class ScreenConfigRepository
                 $overridePageId = (int) $row['id'];
             }
 
-            if (null === $settings && '' !== (string) $row['nightmode_set']) {
+            // Checkbox wird als 0/1 gespeichert
+            if (null === $settings && (bool) $row['nightmode_set']) {
                 $settings = $row;
             }
 
@@ -77,6 +78,7 @@ class ScreenConfigRepository
             (int) $settings['nightmode_location'],
             (int) $settings['nightmode_lead'],
             (int) $settings['nightmode_lag'],
+            (bool) $settings['nightmode_bridge'],
             '' !== $column ? $column : 'main',
             (string) $settings['nightmode_type'] ?: ScreenConfig::TYPE_BLANK,
             (int) $settings['nightmode_article'],

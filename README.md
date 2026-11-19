@@ -16,16 +16,19 @@ Schließungen, Ausnahmen, Feiertage und Saisonzeiten gelten damit automatisch au
   ihre Unterseiten übernehmen Ort, Versatz und Alternativinhalt
 - Alternativinhalt: schwarzer Screen, ein Artikel (auch von einer anderen Seite) oder der Inhalt einer anderen Seite
 - Vorlauf und Nachlauf in Minuten (z. B. 15 Minuten vor Öffnung an)
-- Override „immer normaler Inhalt“ / „immer Alternativinhalt“, gilt auch für alle Unterseiten ohne eigenen Override
+- Pausen überbrücken (optional): bei mehreren Zeitfenstern am Tag durchgehend an
+- Manuell schalten: „Automatisch“, „Immer normalen Inhalt zeigen“, „Immer Alternativinhalt zeigen“. An einer
+  Elternseite gilt es für alle Unterseiten, die auf „Automatisch“ stehen
 - Infoscreen-Seiten werden nie gecacht, damit Änderungen beim nächsten Reload greifen
 - „Zuletzt geladen“ pro Screen und Statusanzeige in den Seiteneinstellungen
 
 ## Regeln
 
-1. Override schlägt alles
+1. Manuell schalten schlägt alles
 2. Kein Ort gewählt oder keine Öffnungszeiten bekannt → normaler Inhalt (lieber Inhalt als ein dunkler Screen)
-3. Sonst nach Öffnungszeiten, erweitert um Vor- und Nachlauf. Ist eine Pause kürzer als Vor- plus Nachlauf,
-   bleibt der Screen durchgehend an.
+3. Sonst nach Öffnungszeiten, erweitert um Vor- und Nachlauf. Mit „Pausen überbrücken“ bleibt der Screen von der
+   ersten Öffnung bis zur letzten Schließung des Tages an. Ohne die Option schaltet er in Pausen um, außer die
+   Pause ist kürzer als Vor- plus Nachlauf.
 
 Ist der gewählte Alternativinhalt leer (gelöscht, unveröffentlicht), zeigt der Screen schwarz.
 

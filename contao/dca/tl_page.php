@@ -10,7 +10,7 @@ $dca = &$GLOBALS['TL_DCA']['tl_page'];
 $dca['palettes']['__selector__'][] = 'nightmode_set';
 $dca['palettes']['__selector__'][] = 'nightmode_type';
 
-$dca['subpalettes']['nightmode_set'] = 'nightmode_location,nightmode_lead,nightmode_lag,nightmode_column,nightmode_type';
+$dca['subpalettes']['nightmode_set'] = 'nightmode_location,nightmode_lead,nightmode_lag,nightmode_bridge,nightmode_column,nightmode_type';
 $dca['subpalettes']['nightmode_type_article'] = 'nightmode_article';
 $dca['subpalettes']['nightmode_type_page'] = 'nightmode_page';
 
@@ -52,6 +52,12 @@ $dca['fields']['nightmode_lag'] = [
     'sql' => 'smallint(5) unsigned NOT NULL default 0',
 ];
 
+$dca['fields']['nightmode_bridge'] = [
+    'inputType' => 'checkbox',
+    'eval' => ['tl_class' => 'w50 clr m12'],
+    'sql' => ['type' => 'boolean', 'default' => false],
+];
+
 $dca['fields']['nightmode_column'] = [
     'inputType' => 'text',
     'default' => 'main',
@@ -85,10 +91,12 @@ $dca['fields']['nightmode_page'] = [
 
 $dca['fields']['nightmode_override'] = [
     'inputType' => 'select',
-    'options' => ['on', 'off'],
+    'default' => 'auto',
+    // auto = nach Öffnungszeiten (bzw. wie die Elternseite), on/off = manuell geschaltet
+    'options' => ['auto', 'on', 'off'],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['nightmode_overrides'],
-    'eval' => ['includeBlankOption' => true, 'tl_class' => 'w50 clr'],
-    'sql' => "varchar(8) NOT NULL default ''",
+    'eval' => ['tl_class' => 'w50 clr'],
+    'sql' => "varchar(8) NOT NULL default 'auto'",
 ];
 
 // Statusanzeige: PageStatusListener
