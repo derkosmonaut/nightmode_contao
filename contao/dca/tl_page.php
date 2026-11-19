@@ -10,7 +10,8 @@ $dca = &$GLOBALS['TL_DCA']['tl_page'];
 $dca['palettes']['__selector__'][] = 'nightmode_set';
 $dca['palettes']['__selector__'][] = 'nightmode_type';
 
-$dca['subpalettes']['nightmode_set'] = 'nightmode_location,nightmode_lead,nightmode_lag,nightmode_bridge,nightmode_column,nightmode_type';
+// Zeilen: Ort | Spalte · Vorlauf | Nachlauf · Pausen überbrücken · Alternativinhalt | Artikel/Seite
+$dca['subpalettes']['nightmode_set'] = 'nightmode_location,nightmode_column,nightmode_lead,nightmode_lag,nightmode_bridge,nightmode_type';
 $dca['subpalettes']['nightmode_type_article'] = 'nightmode_article';
 $dca['subpalettes']['nightmode_type_page'] = 'nightmode_page';
 
@@ -36,7 +37,7 @@ $dca['fields']['nightmode_set'] = [
 $dca['fields']['nightmode_location'] = [
     'inputType' => 'select',
     // Optionen: PageOptionsListener::locations()
-    'eval' => ['includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50'],
+    'eval' => ['includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50 clr'],
     'sql' => 'int(10) unsigned NOT NULL default 0',
 ];
 
@@ -54,7 +55,7 @@ $dca['fields']['nightmode_lag'] = [
 
 $dca['fields']['nightmode_bridge'] = [
     'inputType' => 'checkbox',
-    'eval' => ['tl_class' => 'w50 clr m12'],
+    'eval' => ['tl_class' => 'clr'],
     'sql' => ['type' => 'boolean', 'default' => false],
 ];
 
@@ -70,21 +71,21 @@ $dca['fields']['nightmode_type'] = [
     'default' => 'blank',
     'options' => ['blank', 'article', 'page'],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['nightmode_types'],
-    'eval' => ['submitOnChange' => true, 'tl_class' => 'w50'],
+    'eval' => ['submitOnChange' => true, 'tl_class' => 'w50 clr'],
     'sql' => "varchar(16) NOT NULL default 'blank'",
 ];
 
 $dca['fields']['nightmode_article'] = [
     'inputType' => 'select',
     // Optionen: PageOptionsListener::articles()
-    'eval' => ['mandatory' => true, 'includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50 clr'],
+    'eval' => ['mandatory' => true, 'includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50'],
     'sql' => 'int(10) unsigned NOT NULL default 0',
 ];
 
 $dca['fields']['nightmode_page'] = [
     'inputType' => 'pageTree',
     'foreignKey' => 'tl_page.title',
-    'eval' => ['mandatory' => true, 'fieldType' => 'radio', 'tl_class' => 'w50 clr'],
+    'eval' => ['mandatory' => true, 'fieldType' => 'radio', 'tl_class' => 'w50'],
     'relation' => ['type' => 'hasOne', 'load' => 'lazy'],
     'sql' => 'int(10) unsigned NOT NULL default 0',
 ];
