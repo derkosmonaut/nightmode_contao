@@ -13,7 +13,7 @@ $GLOBALS['TL_LANG']['tl_page']['nightmode_type'] = ['Alternative content', 'What
 $GLOBALS['TL_LANG']['tl_page']['nightmode_article'] = ['Article', 'This article is shown. It may belong to another page.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_page'] = ['Page', 'The published articles of this page (same layout column) are shown.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_bridge'] = ['Bridge breaks', 'If a day has several time windows (e.g. 9-12 and 13-17), the screen stays on from the first opening to the last closing.'];
-$GLOBALS['TL_LANG']['tl_page']['nightmode_override'] = ['Manual switch', 'Switches regardless of the opening hours, e.g. for an evening event or maintenance. On a parent page it applies to all subpages set to "Automatic". Set it back to "Automatic" afterwards.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_override'] = ['Manual switch', 'Overrides the opening hours, e.g. for an event or maintenance. Also applies to subpages set to "Automatic".'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_status'] = ['Status', ''];
 
 $GLOBALS['TL_LANG']['tl_page']['nightmode_types'] = [

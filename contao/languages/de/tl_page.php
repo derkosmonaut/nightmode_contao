@@ -13,7 +13,7 @@ $GLOBALS['TL_LANG']['tl_page']['nightmode_type'] = ['Alternativinhalt', 'Was au�
 $GLOBALS['TL_LANG']['tl_page']['nightmode_article'] = ['Artikel', 'Dieser Artikel wird angezeigt. Er darf auf einer anderen Seite liegen.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_page'] = ['Seite', 'Die veröffentlichten Artikel dieser Seite (gleiche Layout-Spalte) werden angezeigt.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_bridge'] = ['Pausen überbrücken', 'Hat ein Tag mehrere Zeitfenster (z. B. 9-12 und 13-17 Uhr), bleibt der Screen von der ersten Öffnung bis zur letzten Schließung durchgehend an.'];
-$GLOBALS['TL_LANG']['tl_page']['nightmode_override'] = ['Manuell schalten', 'Schaltet unabhängig von den Öffnungszeiten, z. B. für eine Abendveranstaltung oder Wartung. An einer Elternseite gilt es für alle Unterseiten, die auf „Automatisch“ stehen. Danach wieder auf „Automatisch“ stellen.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_override'] = ['Manuell schalten', 'Überstimmt die Öffnungszeiten, z. B. bei Veranstaltung oder Wartung. Gilt auch für Unterseiten auf „Automatisch“.'];
 $GLOBALS['TL_LANG']['tl_page']['nightmode_status'] = ['Status', ''];
 
 $GLOBALS['TL_LANG']['tl_page']['nightmode_types'] = [
