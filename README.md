@@ -6,7 +6,9 @@ Nachtmodus für Infomonitore in Contao (Bundle für Contao 5.7 oder neuer, PHP 8
 nur während der Öffnungszeiten. Außerhalb davon erscheint ein Alternativinhalt. Die Artikel selbst bleiben
 unverändert, entschieden wird bei jedem Aufruf der Seite. Ein Cronjob ist nicht nötig.
 
-Die Öffnungszeiten kommen aus [opentimes_contao](https://github.com/derkosmonaut/opentimes_contao). Spontane
+Die Öffnungszeiten kommen aus [opentimes_contao](https://github.com/derkosmonaut/opentimes_contao), das als
+Abhängigkeit automatisch mitinstalliert wird. Screens, die sich nicht nach Publikumszeiten richten (z. B. im
+Personalraum), bekommen dort einfach einen eigenen Ort. Spontane
 Schließungen, Ausnahmen, Feiertage und Saisonzeiten gelten damit automatisch auch für die Screens.
 
 ## Funktionsumfang
@@ -25,7 +27,7 @@ Schließungen, Ausnahmen, Feiertage und Saisonzeiten gelten damit automatisch au
 ## Regeln
 
 1. Manuell schalten schlägt alles
-2. Kein Ort gewählt oder keine Öffnungszeiten bekannt → normaler Inhalt (lieber Inhalt als ein dunkler Screen)
+2. Kein Ort gewählt oder der Ort hat keinen Zeitplan → normaler Inhalt (lieber Inhalt als ein dunkler Screen)
 3. Sonst nach Öffnungszeiten, erweitert um Vor- und Nachlauf. Mit „Pausen überbrücken“ bleibt der Screen von der
    ersten Öffnung bis zur letzten Schließung des Tages an. Ohne die Option schaltet er in Pausen um, außer die
    Pause ist kürzer als Vor- plus Nachlauf.
@@ -53,8 +55,7 @@ Die Seiten müssen sich selbst neu laden, z. B. per `<meta http-equiv="refresh" 
 ## Technik
 
 - `Screen\ScreenStateResolver`: reine Logik, mit Tests abgedeckt
-- `Schedule\ScheduleProviderInterface`: Quelle der Öffnungszeiten. Ohne opentimes_contao ist ein leerer Anbieter
-  aktiv, die Screens zeigen dann immer den normalen Inhalt.
+- `Schedule\ScheduleProviderInterface`: Quelle der Öffnungszeiten, umgesetzt von `Integration\OpenTimes\OpenTimesScheduleProvider`
 - `EventListener\GetArticlesListener`: ersetzt die Artikel der Spalte
 - `EventListener\ScreenResponseListener`: kein Cache, Heartbeat
 

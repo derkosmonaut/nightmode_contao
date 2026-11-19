@@ -15,10 +15,5 @@ class DerkosmonautNightmodeExtension extends Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config'));
         $loader->load('services.yaml');
-
-        // Ist OpenTimes installiert, liefert es die Öffnungszeiten. Sonst bleibt der leere Anbieter aktiv.
-        if (class_exists('Derkosmonaut\OpenTimesBundle\Resolver\OpeningHoursResolver')) {
-            $loader->load('services_opentimes.yaml');
-        }
     }
 }

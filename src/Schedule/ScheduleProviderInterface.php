@@ -7,7 +7,7 @@ namespace Derkosmonaut\NightmodeBundle\Schedule;
 use DateTimeImmutable;
 
 /**
- * Quelle der Öffnungszeiten. Hält die Nachtmodus-Erweiterung unabhängig vom Öffnungszeiten-Modul.
+ * Quelle der Öffnungszeiten. Umgesetzt von OpenTimesScheduleProvider; hält die Umschaltlogik frei von Datenbank und Contao.
  */
 interface ScheduleProviderInterface
 {

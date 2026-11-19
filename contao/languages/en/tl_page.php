@@ -39,7 +39,7 @@ $GLOBALS['TL_LANG']['tl_page']['nightmode_info'] = [
         'override' => 'switched manually',
         'schedule' => 'opening hours',
         'no_location' => 'no location selected',
-        'unknown' => 'no opening hours known (location without plan or opening hours bundle missing)',
+        'unknown' => 'no opening hours known (location without schedule or deleted)',
     ],
     'next' => 'Next change',
     'never' => 'none within the next 14 days',

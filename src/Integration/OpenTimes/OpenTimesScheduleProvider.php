@@ -12,7 +12,7 @@ use Derkosmonaut\OpenTimesBundle\Resolver\OpeningHoursResolver;
 use Doctrine\DBAL\Connection;
 
 /**
- * Anbindung an derkosmonaut/opentimes-contao. Wird nur registriert, wenn das Paket installiert ist.
+ * Anbindung an derkosmonaut/opentimes-contao.
  * Schließungen, Ausnahmen, Feiertage und Saisonzeiten wertet der OpenTimes-Resolver aus.
  */
 final class OpenTimesScheduleProvider implements ScheduleProviderInterface

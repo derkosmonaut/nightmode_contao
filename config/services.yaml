@@ -3,11 +3,11 @@ services:
         autowire: true
         autoconfigure: true
 
-    Derkosmonaut\NightmodeBundle\Schedule\NullScheduleProvider: ~
+    # Öffnungszeiten aus derkosmonaut/opentimes-contao
+    Derkosmonaut\NightmodeBundle\Integration\OpenTimes\OpenTimesScheduleProvider: ~
 
-    # Wird von services_opentimes.yaml überschrieben, wenn OpenTimes installiert ist
     Derkosmonaut\NightmodeBundle\Schedule\ScheduleProviderInterface:
-        alias: Derkosmonaut\NightmodeBundle\Schedule\NullScheduleProvider
+        alias: Derkosmonaut\NightmodeBundle\Integration\OpenTimes\OpenTimesScheduleProvider
 
     Derkosmonaut\NightmodeBundle\Screen\:
         resource: ../src/Screen/

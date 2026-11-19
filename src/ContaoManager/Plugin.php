@@ -9,6 +9,7 @@ use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Derkosmonaut\NightmodeBundle\DerkosmonautNightmodeBundle;
+use Derkosmonaut\OpenTimesBundle\DerkosmonautOpenTimesBundle;
 
 class Plugin implements BundlePluginInterface
 {
@@ -16,8 +17,7 @@ class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(DerkosmonautNightmodeBundle::class)
-                // nach OpenTimes laden, falls installiert (sonst wird der Eintrag ignoriert)
-                ->setLoadAfter([ContaoCoreBundle::class, 'Derkosmonaut\OpenTimesBundle\DerkosmonautOpenTimesBundle']),
+                ->setLoadAfter([ContaoCoreBundle::class, DerkosmonautOpenTimesBundle::class]),
         ];
     }
 }

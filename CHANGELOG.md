@@ -9,6 +9,8 @@
 
 ### Geändert
 
+- `derkosmonaut/opentimes-contao` ist jetzt feste Abhängigkeit und wird mitinstalliert
+
 - Override heißt jetzt „Manuell schalten“ mit der Option „Automatisch (nach Öffnungszeiten)“ als Standard
 
 ### Hinzugefügt
@@ -19,6 +21,6 @@
 - Vor- und Nachlauf in Minuten
 - Option „Pausen überbrücken“ für mehrere Zeitfenster am Tag
 - Override „immer an“ / „immer aus“, vererbbar (z. B. für einen ganzen Raum)
-- Anbindung an `derkosmonaut/opentimes-contao` über `ScheduleProviderInterface`
+- Öffnungszeiten aus `derkosmonaut/opentimes-contao` über `ScheduleProviderInterface`
 - Infoscreen-Seiten werden nie gecacht; Heartbeat „zuletzt geladen“
 - Statusanzeige in den Seiteneinstellungen
