@@ -1,0 +1,9 @@
+parameters:
+    level: 6
+    paths:
+        - src
+    # Die OpenTimes-Anbindung braucht das optionale Paket derkosmonaut/opentimes-contao
+    excludePaths:
+        - src/Integration/OpenTimes
+    # Contao-Klassen sind nur bei installiertem contao/core-bundle bekannt
+    reportUnmatchedIgnoredErrors: false

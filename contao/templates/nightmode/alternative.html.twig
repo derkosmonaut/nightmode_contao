@@ -1,0 +1,16 @@
+{#
+    Alternativinhalt eines Infoscreens außerhalb der Öffnungszeiten.
+
+    Variablen:
+      content  gerenderter Artikel oder Seiteninhalt (HTML)
+      blank    true = schwarzer Screen
+      type     article, page oder blank
+#}
+{% if blank %}
+    <div class="nightmode nightmode--blank" aria-hidden="true"
+         style="position:fixed;inset:0;z-index:2147483647;background:#000;cursor:none"></div>
+{% else %}
+    <div class="nightmode nightmode--{{ type }}">
+        {{ content|raw }}
+    </div>
+{% endif %}

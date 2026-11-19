@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+$GLOBALS['TL_LANG']['tl_page']['nightmode_legend'] = 'Infoscreen (Nachtmodus)';
+
+$GLOBALS['TL_LANG']['tl_page']['nightmode_set'] = ['Infoscreen-Einstellungen festlegen', 'Legt die Einstellungen für diese Seite und alle Unterseiten fest. Ohne Haken übernimmt die Seite die Einstellungen der nächsten Elternseite, die welche festlegt.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_location'] = ['Ort', 'Nach den Öffnungszeiten dieses Ortes schaltet der Screen um. Spontane Schließungen, Ausnahmen und Feiertage zählen mit.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_lead'] = ['Vorlauf (Minuten)', 'So viele Minuten vor der Öffnung zeigt der Screen schon den normalen Inhalt.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_lag'] = ['Nachlauf (Minuten)', 'So viele Minuten nach der Schließung zeigt der Screen noch den normalen Inhalt.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_column'] = ['Layout-Spalte', 'Die Spalte, deren Artikel ersetzt werden, meist „main“.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_type'] = ['Alternativinhalt', 'Was außerhalb der Öffnungszeiten angezeigt wird.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_article'] = ['Artikel', 'Dieser Artikel wird angezeigt. Er darf auf einer anderen Seite liegen.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_page'] = ['Seite', 'Die veröffentlichten Artikel dieser Seite (gleiche Layout-Spalte) werden angezeigt.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_override'] = ['Override', 'Schaltet unabhängig von den Öffnungszeiten. Gilt auch für alle Unterseiten ohne eigenen Override, z. B. für einen ganzen Raum.'];
+$GLOBALS['TL_LANG']['tl_page']['nightmode_status'] = ['Status', ''];
+
+$GLOBALS['TL_LANG']['tl_page']['nightmode_types'] = [
+    'blank' => 'Schwarzer Screen',
+    'article' => 'Artikel',
+    'page' => 'Inhalt einer anderen Seite',
+];
+
+$GLOBALS['TL_LANG']['tl_page']['nightmode_overrides'] = [
+    'on' => 'Immer normaler Inhalt',
+    'off' => 'Immer Alternativinhalt',
+];
+
+$GLOBALS['TL_LANG']['tl_page']['nightmode_info'] = [
+    'title' => 'Status (gespeicherter Stand)',
+    'none' => 'Für diese Seite ist kein Infoscreen eingerichtet, auch nicht über eine Elternseite.',
+    'state' => 'Jetzt',
+    'active' => 'normaler Inhalt',
+    'inactive' => 'Alternativinhalt',
+    'reason' => 'Grund',
+    'reasons' => [
+        'override' => 'Override',
+        'schedule' => 'Öffnungszeiten',
+        'no_location' => 'kein Ort gewählt',
+        'unknown' => 'keine Öffnungszeiten bekannt (Ort ohne Plan oder Öffnungszeiten-Modul fehlt)',
+    ],
+    'next' => 'Nächster Wechsel',
+    'never' => 'keiner in den nächsten 14 Tagen',
+    'source' => 'Einstellungen von',
+    'overrideSource' => 'Override von',
+    'page' => 'Seite ID %d',
+    'seen' => 'Zuletzt geladen',
+    'neverSeen' => 'noch nie',
+];
