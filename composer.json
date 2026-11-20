@@ -3,6 +3,13 @@
     "description": "Nachtmodus für Infomonitore in Contao: Inhalte nur während der Öffnungszeiten, sonst Alternativinhalt",
     "type": "contao-bundle",
     "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Sebastian Baller / bbsMEDIEN",
+            "homepage": "https://bbsmedien.de",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^8.5",
         "contao/core-bundle": "^5.7",
